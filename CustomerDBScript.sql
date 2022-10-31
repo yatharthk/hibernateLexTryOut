@@ -2,7 +2,7 @@ create database `hibernatedb`;
 use `hibernatedb`;
 
 create table CUSTOMER(
-id int primary key not null,
+id int primary key not null auto_increment,
 name varchar(30) ,
 dob date
 );
