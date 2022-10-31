@@ -1,30 +1,42 @@
-package org.example.entity;
+package org.myBank.entity;
+
+
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
-
-import java.time.LocalDate;
 import java.util.Date;
 
 @Data
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name="CUSTOMER")
+@Table(name = "Customer")
+@GenericGenerator(name = "idGen",strategy = "increment")
 public class Customer {
 
     @Id
-    @Column(name = "id")
-    private int id;
+    @GeneratedValue(generator = "idGen")
+    @Column(name = "ID")
+    private int customerId;
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String customerName;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="dob")
-    private LocalDate dateOfBirth;
+    @Column(name = "DOB")
+    Date dateOfBirth;
 
-    @Transient
-    private int age;
+    @Column(name = "ADDRESS")
+    String address;
 
+    @Column(name = "PHONE_NO")
+    Long phoneNo;
+
+    public Customer(String name, Date dob, String address, Long phone) {
+        this.customerName = name;
+        this.dateOfBirth = dob;
+        this.address = address;
+        this.phoneNo = phone;
+    }
 }
