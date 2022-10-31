@@ -17,7 +17,7 @@ public class Customer {
 
     @Id
     //@GeneratedValue(generator = "idGen")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //THIS WORKS WITH AUTO INCREMENT PROPERTY (MYSQL-YES /ORACLE -NO)
     @Column(name = "ID")
     private int customerId;
 
