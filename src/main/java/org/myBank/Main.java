@@ -1,8 +1,11 @@
-package org.example;
+package org.myBank;
 
-import org.myBank.dao.CustomerDaoImpl;
-import org.myBank.dao.MCustomerDao;
+
 import org.myBank.entity.Customer;
+import org.myBank.repository.CustomerRepository;
+import org.myBank.repository.CustomerRepositoryImpl;
+import org.myBank.service.CustomerService;
+import org.myBank.service.CustomerServiceImpl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,7 +15,8 @@ import java.util.logging.Logger;
 public class Main {
    static Logger LOG = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
-        MCustomerDao customerDao = new CustomerDaoImpl();
+        CustomerRepository customerDao = new CustomerRepositoryImpl();
+        CustomerService customerService = new CustomerServiceImpl(customerDao);
         try {
             LOG.info("Enter the Customer details");
             Scanner sc = new Scanner(System.in);
@@ -27,7 +31,7 @@ public class Main {
             System.out.println("Enter the Customer phoneNo");
             Long phone = sc.nextLong();
             Customer customer = new Customer(name, dob, address, phone);
-            customerDao.addCustomer(customer);
+            customerService.addCustomer(customer);
             LOG.info("One record created");
             sc.close();
         } catch (Exception e) {
