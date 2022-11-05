@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @ToString
@@ -26,5 +25,19 @@ public class Customer {
 
     @Transient
     private int age;
+
+    //ASSOCIATE LOCKER WITH CUSTOMER -> CUSTOMER HAS A LOCKER .
+    // DB MAPPINGS SHOULD BE PRESENT.
+    //TYPE -> ONE TO ONE MAPPING
+    //IDENTIFIER FOR LOCKER  = LOCKER iD -> FOREIGN KEY
+    //Cascade -> which operations should affect locker table.->
+        // all=(persist,update,delete,insert)
+    //COLUMNS JOINING BASED ON "lockerId"
+        // this should be same as we defined in our entity class in java.
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "lockerId",unique = true)
+    private Locker locker;
 
 }
