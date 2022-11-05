@@ -11,13 +11,12 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "Customer")
-//@GenericGenerator(name = "idGen",strategy = "increment")
+@GenericGenerator(name = "idGen",strategy = "increment")
 public class Customer {
 
     @Id
-    //@GeneratedValue(generator = "idGen")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //THIS WORKS WITH AUTO INCREMENT PROPERTY (MYSQL-YES /ORACLE -NO)
+    @GeneratedValue(generator = "idGen")
+//  @GeneratedValue(strategy = GenerationType.IDENTITY) //THIS WORKS WITH AUTO INCREMENT PROPERTY (MYSQL-YES /ORACLE -NO)
 
     @Column(name = "ID")
     private int customerId;
