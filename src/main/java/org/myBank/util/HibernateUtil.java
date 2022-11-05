@@ -1,11 +1,11 @@
 package org.myBank.util;
 
-import org.myBank.entity.Customer;
 import org.hibernate.SessionFactory;
 
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.myBank.entity.Movie;
 
 
 public class HibernateUtil {
@@ -15,7 +15,7 @@ public class HibernateUtil {
     static {
         try {
             Configuration configuration = new Configuration().configure();
-            configuration.addAnnotatedClass(Customer.class);
+            configuration.addAnnotatedClass(Movie.class);
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
