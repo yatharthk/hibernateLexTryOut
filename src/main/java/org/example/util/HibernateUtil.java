@@ -1,7 +1,7 @@
 package org.example.util;
 
 import org.example.entity.Customer;
-import org.hibernate.InstantiationException;
+import org.example.entity.Locker;
 import org.hibernate.SessionFactory;
 
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -17,6 +17,7 @@ public class HibernateUtil {
         try {
             Configuration configuration = new Configuration().configure();
             configuration.addAnnotatedClass(Customer.class);
+            configuration.addAnnotatedClass(Locker.class);
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);

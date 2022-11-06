@@ -1,12 +1,20 @@
 package org.example.repository;
 
 import org.example.entity.Customer;
+import org.example.entity.Locker;
 import org.example.util.HibernateUtil;
 import org.hibernate.Session;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
+
     @Override
-    public void addCustomer(Customer c) {
+    public void addCustomerWithLocker(Customer c, Locker l) {
+        c.setLocker(l);
+        addCustomerNoLocker(c);
+    }
+
+    @Override
+    public void addCustomerNoLocker(Customer c) {
         Session session = HibernateUtil.getSession().openSession();
         session.beginTransaction();
         session.persist(c);
@@ -30,6 +38,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         temp.setCustomerName(c.getCustomerName());
         temp.setDateOfBirth(c.getDateOfBirth());
         temp.setAge(c.getAge());
+        temp.setLocker(c.getLocker());
+        temp.setPhoneNo(c.getPhoneNo());
+        temp.setAddress(c.getAddress());
         session.beginTransaction();
         session.merge(temp);
         session.getTransaction().commit();

@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.entity.Customer;
+import org.example.entity.Locker;
 import org.example.repository.CustomerRepository;
 
 public class CustomerServiceImpl implements CustomerService{
@@ -11,8 +12,11 @@ public class CustomerServiceImpl implements CustomerService{
         this.customerRepository = repo;
     }
     @Override
-    public void addCustomer(Customer c) {
-        this.customerRepository.addCustomer(c);
+    public void addCustomerNoLocker(Customer c) {
+        this.customerRepository.addCustomerNoLocker(c);
+    }
+    public void addCustomerWithLocker(Customer c, Locker l) {
+        this.customerRepository.addCustomerWithLocker(c,l);
     }
 
     @Override

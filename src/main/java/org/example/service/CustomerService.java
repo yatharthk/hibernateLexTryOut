@@ -1,9 +1,12 @@
 package org.example.service;
 
 import org.example.entity.Customer;
+import org.example.entity.Locker;
 
 public interface CustomerService {
-    void addCustomer(Customer c);
+    void addCustomerNoLocker(Customer c);
+
+    void addCustomerWithLocker(Customer c, Locker l);
 
     Customer getCustomer(int id);
 

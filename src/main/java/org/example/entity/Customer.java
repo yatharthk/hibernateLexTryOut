@@ -23,6 +23,12 @@ public class Customer {
     @Column(name="dob")
     private LocalDate dateOfBirth;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone_no")
+    private Long phoneNo;
+
     @Transient
     private int age;
 
@@ -37,7 +43,7 @@ public class Customer {
 
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "lockerId",unique = true)
+    @JoinColumn(name = "locker_Id",unique = true)
     private Locker locker;
 
 }
