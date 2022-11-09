@@ -1,16 +1,16 @@
 package org.example.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.ToString;
-
-import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @ToString
 @Entity
-@Table(name="CUSTOMER")
+@Table(name="CUSTOMER_HQL")
 public class Customer {
 
     @Id
@@ -20,11 +20,5 @@ public class Customer {
     @Column(name = "name")
     private String customerName;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="dob")
-    private LocalDate dateOfBirth;
-
-    @Transient
-    private int age;
 
 }
