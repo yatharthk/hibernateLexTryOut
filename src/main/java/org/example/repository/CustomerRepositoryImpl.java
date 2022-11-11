@@ -29,7 +29,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         Customer temp = session.get(Customer.class,id);
         temp.setCustomerName(c.getCustomerName());
         temp.setDateOfBirth(c.getDateOfBirth());
-        temp.setAge(c.getAge());
         session.beginTransaction();
         session.merge(temp);
         session.getTransaction().commit();
