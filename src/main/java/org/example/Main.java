@@ -6,6 +6,10 @@ import org.example.entity.DesktopEntity;
 import org.example.entity.Trainee;
 import org.example.service.TraineeService;
 import org.example.service.TraineeServiceImpl;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +27,7 @@ public class Main {
             System.out.println(" 4. Allocate new Desktop to existing trainee");
             System.out.println(" 5. Deallocate Desktop");
             System.out.println(" 6. Delete Trainee only\n 7. Delete Trainee and Desktop");
-            System.out.println(" 8. Get Allocation Details\n 9. Exit");
+            System.out.println(" 8. Get Allocation Details\n 9.Multi select adn fetch results\n  10. Exit");
             System.out.println("\nEnter your choice");
             int ch = sc.nextInt();
             switch (ch) {
@@ -87,7 +91,17 @@ public class Main {
                     tId = sc.nextInt();
                     System.out.println(traineeService.getAllocationDetails(tId));
                     break;
-                case 9:
+                case 9 :
+                    System.out.println("MULTI SELECT RECORDS IN ONE SHOT USING IDS");
+                    System.out.println("Enter the 3 ids");
+                    List<Integer> ids = new ArrayList<>();
+                    int id1 = sc.nextInt();
+                    int id2= sc.nextInt();
+                    int id3 = sc.nextInt();
+                    Collections.addAll(ids,id1,id2,id3);
+                    traineeService.getDetailsUsingMultiSelect(ids);
+                    break;
+                case 11:
                     System.out.println("Exit the program");
                     System.exit(1);
                     break;

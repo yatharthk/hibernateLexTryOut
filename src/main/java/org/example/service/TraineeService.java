@@ -3,6 +3,8 @@ package org.example.service;
 import org.example.entity.DesktopEntity;
 import org.example.entity.Trainee;
 
+import java.util.List;
+
 public interface TraineeService {
 
     void addTraineeWithoutDesktop(Trainee t);
@@ -19,4 +21,5 @@ public interface TraineeService {
 
     Trainee getAllocationDetails(int id);
 
+    void getDetailsUsingMultiSelect(List<Integer> ids);
 }

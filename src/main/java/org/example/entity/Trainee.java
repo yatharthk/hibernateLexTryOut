@@ -20,6 +20,6 @@ public class Trainee {
     private String name;
 
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE})
-    @JoinColumn(name = "asset_id",unique = true)
+    @JoinColumn(name = "trainee_asset")
     private DesktopEntity desktop;
 }

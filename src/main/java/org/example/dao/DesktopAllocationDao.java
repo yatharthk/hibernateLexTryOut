@@ -3,6 +3,8 @@ package org.example.dao;
 import org.example.entity.DesktopEntity;
 import org.example.entity.Trainee;
 
+import java.util.List;
+
 public interface DesktopAllocationDao {
     void addTraineeWithoutDesktop(Trainee t);
 
@@ -19,4 +21,6 @@ public interface DesktopAllocationDao {
     void deleteTraineeAndDesktop(int traineeId);
 
     Trainee getAllocationDetails(int id);
+
+    void getDetailsUsingMultiSelect(List<Integer> ids);
 }

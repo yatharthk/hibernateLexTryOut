@@ -4,9 +4,11 @@ import org.example.dao.DesktopAllocationDao;
 import org.example.entity.DesktopEntity;
 import org.example.entity.Trainee;
 
+import java.util.List;
+
 public class TraineeServiceImpl implements TraineeService {
 
-    private DesktopAllocationDao desktopAllocationDao;
+    private final DesktopAllocationDao desktopAllocationDao;
 
     public TraineeServiceImpl(DesktopAllocationDao dao) {
         this.desktopAllocationDao = dao;
@@ -56,5 +58,10 @@ public class TraineeServiceImpl implements TraineeService {
             System.out.println("This trainee has an asset");
         }
         return temp;
+    }
+
+    @Override
+    public void getDetailsUsingMultiSelect(List<Integer> ids) {
+        this.desktopAllocationDao.getDetailsUsingMultiSelect(ids);
     }
 }

@@ -4,6 +4,7 @@ import org.example.entity.DesktopEntity;
 import org.example.entity.Trainee;
 import org.example.util.HibernateUtil;
 import org.hibernate.HibernateException;
+import org.hibernate.MultiIdentifierLoadAccess;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -156,5 +157,15 @@ public class DesktopAllocationDaoImpl implements DesktopAllocationDao {
             return null;
         }
 
+    }
+
+    @Override
+    public void getDetailsUsingMultiSelect(List<Integer> ids) {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            MultiIdentifierLoadAccess<Trainee> multi =  session.byMultipleIds(Trainee.class);
+            List<Trainee> list = multi.multiLoad(ids);
+            System.out.println("Printing details of 3 ids provided");
+            list.forEach(System.out::println);
+        }
     }
 }

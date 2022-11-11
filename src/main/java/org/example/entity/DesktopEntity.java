@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="desktops")
+@Table(name="desktop")
 public class DesktopEntity {
 
     @Id
-    @Column(name = "asset_id")
+    @Column(name = "assetId")
     private String machineEntity;
 
     @Column(name = "makeYear")
