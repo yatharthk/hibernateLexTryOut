@@ -11,13 +11,13 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "Customer")
-@GenericGenerator(name = "idGen",strategy = "increment")
+@GenericGenerator(name = "idGen",strategy = "native")
+//native strategy for mysql will work with auto increment enabled
+// and if db supports sequence,it will be  using sequence.
 public class Customer {
 
     @Id
     @GeneratedValue(generator = "idGen")
-//  @GeneratedValue(strategy = GenerationType.IDENTITY) //THIS WORKS WITH AUTO INCREMENT PROPERTY (MYSQL-YES /ORACLE -NO)
-
     @Column(name = "ID")
     private int customerId;
 

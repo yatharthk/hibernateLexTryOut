@@ -11,10 +11,10 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 
-public class IncrementDemo {
+public class NativeDemo {
 
 
-    static Logger LOG = Logger.getLogger(IncrementDemo.class.getName());
+    static Logger LOG = Logger.getLogger(NativeDemo.class.getName());
     public static void main(String[] args) {
         CustomerRepository customerDao = new CustomerRepositoryImpl();
         try {
