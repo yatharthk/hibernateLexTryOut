@@ -1,10 +1,10 @@
 package org.myBank;
 
-import org.hibernate.HibernateException;
 import org.myBank.entity.CustomerLoan;
-import org.myBank.entity.CustomerLoanPK;
 import org.myBank.repository.CustomerLoanDao;
 import org.myBank.repository.CustomerLoanDaoImpl;
+import org.myBank.service.CustomerLoanService;
+import org.myBank.service.CustomerLoanServiceImpl;
 
 import java.util.Scanner;
 
@@ -12,6 +12,7 @@ public class CompositePrimaryKeyDemo {
 
     public static void main(String[] args) {
         CustomerLoanDao customerDao = new CustomerLoanDaoImpl();
+        CustomerLoanService service = new CustomerLoanServiceImpl(customerDao);
         try {
             System.out.println("Enter the Customer Loan details");
             Scanner sc = new Scanner(System.in);
@@ -33,12 +34,14 @@ public class CompositePrimaryKeyDemo {
             custLoan.setCustomerId(cid);
             custLoan.setLoanId(lid);
 
-            customerDao.addCustomerLoanDetails(custLoan);
+            service.addCustomerLoanDetails(custLoan);
             System.out.println("One record created");
-            sc.close();
+
+            System.out.println("get details");
+            System.out.println(service.getCustomerLoanDetails(cid,lid));
 
         } catch (Exception e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 }

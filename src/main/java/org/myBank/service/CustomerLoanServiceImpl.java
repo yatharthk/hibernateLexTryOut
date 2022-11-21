@@ -5,7 +5,7 @@ import org.myBank.repository.CustomerLoanDao;
 
 public class CustomerLoanServiceImpl implements CustomerLoanService{
 
-    private CustomerLoanDao customerLoanDao;
+    private final CustomerLoanDao customerLoanDao;
 
     public CustomerLoanServiceImpl(CustomerLoanDao dao){
         this.customerLoanDao=dao;
